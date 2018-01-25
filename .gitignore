@@ -1,5 +1,11 @@
 # Compiled class file
 *.class
+*.springBeans
+*.project
+*.classpath
+*.settings
+*.mvn
+*/target
 
 # Log file
 *.log
