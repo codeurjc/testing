@@ -66,7 +66,7 @@ public class TablonController {
 	public String nuevoAnuncio(Model model, @PathVariable Long id) {
 
 		Anuncio anuncio = anuncios.get(id);
-
+                
 		model.addAttribute("anuncio", anuncio);
 
 		return "ver_anuncio";
