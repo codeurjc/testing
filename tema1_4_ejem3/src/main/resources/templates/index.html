@@ -1,0 +1,18 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<h1>Message forum</h1>
+	<form id="form" action="/" method="post">
+		Title: <input id='title-input' type='text' name='title' />
+		Body: <input id='body-input' type='text' name='body' /> 
+		<input id='submit' type='submit' value='New' />
+	</form>
+	<div id="messages">
+	{{#messages}}
+	<p>Message: <b>Title:</b> <span id='title'>{{title}}</span> <b>Description:</b> <span id='body'>{{body}}</span><br>
+	{{/messages}}
+	</div>
+</body>
+</html>
