@@ -1,7 +1,7 @@
 web:
   build: .
   ports:
-    - "5555:8080"
+    - "8080:8080"
   links:
     - db
 db:

@@ -3,7 +3,6 @@ package es.codeurjc.test.tablonanuncios;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -36,7 +35,7 @@ public class AnuncioTest {
 	
 	@Test
 	public void createTest() throws InterruptedException {
-		driver.get("http://localhost:5555/");
+		driver.get("http://localhost:8080/");
 		
 		driver.findElement(By.linkText("Nuevo anuncio")).click();
 		
