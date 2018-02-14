@@ -47,9 +47,13 @@ public class WebAppTest {
 	}
 
 	@Test
-	public void test() {
+	public void test() throws InterruptedException {
 		
 		driver.get("http://localhost:8080/");
+		
+		System.out.println("Waiting for page load");
+		
+		Thread.sleep(10000);
 
 		String newTitle = "MessageTitle";
 		String newBody = "MessageBody";
