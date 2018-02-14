@@ -1,6 +1,7 @@
 package es.codeurjc.test.web;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.openqa.selenium.remote.DesiredCapabilities.chrome;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -13,8 +14,6 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
@@ -43,11 +42,7 @@ public class WebAppTest {
 	        driver = new ChromeDriver();
 	    } else {
 	    	//Selenium Grid in ElasTest
-//	        DesiredCapabilities caps = new DesiredCapabilities();
-//	        caps.setBrowserName("chrome");
-//	        caps.setCapability(ChromeOptions.CAPABILITY, new ChromeOptions());
-	    	DesiredCapabilities caps = DesiredCapabilities.chrome();
-	        driver = new RemoteWebDriver(new URL(eusURL), caps);
+	        driver = new RemoteWebDriver(new URL(eusURL), chrome());
 	    }
 	}
 

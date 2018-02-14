@@ -1,6 +1,10 @@
 package es.codeurjc.test.web;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.openqa.selenium.remote.DesiredCapabilities.chrome;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -10,6 +14,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 
@@ -23,8 +28,15 @@ public class WebAppTest {
 	}
 	
 	@Before
-	public void setupTest() {
-		driver = new ChromeDriver();
+	public void setupTest() throws MalformedURLException {
+		String eusURL = System.getenv("ET_EUS_API");
+	    if (eusURL == null) {
+	    	//Local Google Chrome
+	        driver = new ChromeDriver();
+	    } else {
+	    	//Selenium Grid in ElasTest
+	        driver = new RemoteWebDriver(new URL(eusURL), chrome());
+	    }
 	}
 
 	@After
