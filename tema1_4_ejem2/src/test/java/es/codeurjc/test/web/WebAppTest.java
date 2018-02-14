@@ -43,9 +43,10 @@ public class WebAppTest {
 	        driver = new ChromeDriver();
 	    } else {
 	    	//Selenium Grid in ElasTest
-	        DesiredCapabilities caps = new DesiredCapabilities();
-	        caps.setBrowserName("chrome");
-	        caps.setCapability(ChromeOptions.CAPABILITY, new ChromeOptions());    
+//	        DesiredCapabilities caps = new DesiredCapabilities();
+//	        caps.setBrowserName("chrome");
+//	        caps.setCapability(ChromeOptions.CAPABILITY, new ChromeOptions());
+	    	DesiredCapabilities caps = DesiredCapabilities.chrome();
 	        driver = new RemoteWebDriver(new URL(eusURL), caps);
 	    }
 	}
