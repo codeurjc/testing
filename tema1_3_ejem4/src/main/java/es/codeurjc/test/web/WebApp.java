@@ -14,7 +14,7 @@ public class WebApp {
     }
     
     public static void start() {
-    	start(new String[] {});
+    	start(new String[] { "--server.port=9000" });
     }
 
 	private static void start(String[] args) {

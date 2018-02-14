@@ -41,9 +41,9 @@ public class WebAppTest {
 	}
 
 	@Test
-	public void test() {
+	public void test() throws InterruptedException {
 		
-		driver.get("http://localhost:8080/");
+		driver.get("http://localhost:9000/");
 
 		String newTitle = "MessageTitle";
 		String newBody = "MessageBody";
@@ -56,6 +56,8 @@ public class WebAppTest {
 		String title = driver.findElement(By.id("title")).getText();
 		String body = driver.findElement(By.id("body")).getText();
 
+                Thread.sleep(10000);
+                
 		assertThat(title).isEqualTo(newTitle);
 		assertThat(body).isEqualTo(newBody);
 	}
