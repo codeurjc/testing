@@ -7,7 +7,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -20,23 +19,38 @@ import io.github.bonigarcia.wdm.ChromeDriverManager;
 
 public class WebAppTest {
 
+	private static String sutURL;
+	private static String eusURL;
+
 	private WebDriver driver;
 
 	@BeforeClass
 	public static void setupClass() {
-		ChromeDriverManager.getInstance().setup();
+
+		String sutHost = System.getenv("ET_SUT_HOST");
+		if (sutHost == null) {
+			sutURL = "http://localhost:8080/";
+		} else {
+			sutURL = "http://" + sutHost + ":8080/";
+		}
+		System.out.println("App url: " + sutURL);
+
+		eusURL = System.getenv("ET_EUS_API");
+		if (eusURL == null) {
+			ChromeDriverManager.getInstance().setup();
+		}
 	}
-	
+
 	@Before
 	public void setupTest() throws MalformedURLException {
 		String eusURL = System.getenv("ET_EUS_API");
-	    if (eusURL == null) {
-	    	//Local Google Chrome
-	        driver = new ChromeDriver();
-	    } else {
-	    	//Selenium Grid in ElasTest
-	        driver = new RemoteWebDriver(new URL(eusURL), chrome());
-	    }
+		if (eusURL == null) {
+			// Local Google Chrome
+			driver = new ChromeDriver();
+		} else {
+			// Selenium Grid in ElasTest
+			driver = new RemoteWebDriver(new URL(eusURL), chrome());
+		}
 	}
 
 	@After
@@ -48,12 +62,8 @@ public class WebAppTest {
 
 	@Test
 	public void test() throws InterruptedException {
-		
-		driver.get("http://localhost:8080/");
-		
-		System.out.println("Waiting for page load");
-		
-		Thread.sleep(10000);
+
+		driver.get(sutURL);
 
 		String newTitle = "MessageTitle";
 		String newBody = "MessageBody";
