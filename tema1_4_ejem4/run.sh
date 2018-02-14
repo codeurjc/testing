@@ -1,6 +1,6 @@
 #!/bin/sh
 while ! nc -z db 3306 ; do
-    echo "Waiting for MySQL server to be abailable"
+    echo "Waiting for MySQL server to be available"
     sleep 2
 done
 
