@@ -4,4 +4,4 @@ while ! nc -z db 3306 ; do
     sleep 2
 done
 
-exec java -jar -Dspring.datasource.url=jdbc:mysql://db/test app.jar
+exec java -jar -Dspring.datasource.url=jdbc:mysql://db/test target/app.jar
