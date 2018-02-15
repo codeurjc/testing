@@ -62,13 +62,20 @@ public class AnuncioTest {
 	
 	@Test
 	public void createTest() throws InterruptedException {
+		
 		driver.get(sutURL);
 		
+		Thread.sleep(2000);
+		
 		driver.findElement(By.linkText("Nuevo anuncio")).click();
+		
+		Thread.sleep(2000);
 		
 		driver.findElement(By.name("nombre")).sendKeys("Anuncio nuevo con Selenium");
 		driver.findElement(By.name("asunto")).sendKeys("Vendo moto");
 		driver.findElement(By.name("comentario")).sendKeys("Un comentario muy largo...");
+		
+		Thread.sleep(2000);
 		
 		driver.findElement(By.xpath("//input[@type='submit']")).click();
 		

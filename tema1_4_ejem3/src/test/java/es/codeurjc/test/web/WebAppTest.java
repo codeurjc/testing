@@ -68,16 +68,24 @@ public class WebAppTest {
 		String newTitle = "MessageTitle";
 		String newBody = "MessageBody";
 
+		Thread.sleep(3000);
+		
 		driver.findElement(By.id("title-input")).sendKeys(newTitle);
 		driver.findElement(By.id("body-input")).sendKeys(newBody);
 
+		Thread.sleep(3000);
+		
 		driver.findElement(By.id("submit")).click();
 
+		Thread.sleep(3000);
+		
 		String title = driver.findElement(By.id("title")).getText();
 		String body = driver.findElement(By.id("body")).getText();
 
 		assertThat(title).isEqualTo(newTitle);
 		assertThat(body).isEqualTo(newBody);
+		
+		Thread.sleep(10000);
 	}
 
 }
