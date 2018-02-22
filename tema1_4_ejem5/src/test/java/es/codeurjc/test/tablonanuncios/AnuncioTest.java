@@ -11,7 +11,9 @@ import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestName;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,6 +28,9 @@ public class AnuncioTest {
 	
 	private static Logger logger = LogManager.getLogger(AnuncioTest.class);
 
+	@Rule
+	public TestName testName = new TestName();
+	
 	WebDriver driver;
 	
 	@BeforeClass
@@ -47,6 +52,9 @@ public class AnuncioTest {
 
 	@Before
 	public void setupTest() throws MalformedURLException {
+		
+		logger.info("##### Start test: " + testName.getMethodName());
+		
 		String eusURL = System.getenv("ET_EUS_API");
 		if (eusURL == null) {
 			// Local Google Chrome
@@ -62,6 +70,9 @@ public class AnuncioTest {
 		if(driver != null) {
 			driver.quit();
 		}
+		
+		logger.info("##### Finish test: " + testName.getMethodName());
+
 	}
 	
 	@Test
