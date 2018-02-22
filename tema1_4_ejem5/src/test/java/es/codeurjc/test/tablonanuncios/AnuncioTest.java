@@ -64,7 +64,7 @@ public class AnuncioTest {
 			// Selenium Grid in ElasTest
 			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 			capabilities.setCapability("browserId", testName.getMethodName());
-			driver = new RemoteWebDriver(new URL(eusURL), chrome());
+			driver = new RemoteWebDriver(new URL(eusURL), capabilities);
 		}
 	}
 	
