@@ -17,6 +17,7 @@ import org.junit.rules.TestName;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
@@ -61,6 +62,8 @@ public class AnuncioTest {
 			driver = new ChromeDriver();
 		} else {
 			// Selenium Grid in ElasTest
+			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+			capabilities.setCapability("browserId", testName.getMethodName());
 			driver = new RemoteWebDriver(new URL(eusURL), chrome());
 		}
 	}
