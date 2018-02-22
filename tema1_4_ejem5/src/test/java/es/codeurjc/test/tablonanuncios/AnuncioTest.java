@@ -6,6 +6,8 @@ import static org.openqa.selenium.remote.DesiredCapabilities.chrome;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -21,6 +23,8 @@ public class AnuncioTest {
 
 	private static String sutURL;
 	private static String eusURL;
+	
+	private static Logger logger = LogManager.getLogger(AnuncioTest.class);
 
 	WebDriver driver;
 	
@@ -63,28 +67,28 @@ public class AnuncioTest {
 	@Test
 	public void createTest() throws InterruptedException {
 		
-		System.out.println("Open page");
+		logger.info("Open page");
 		
 		driver.get(sutURL);
 		
 		Thread.sleep(2000);
 		
-		System.out.println("Search link");
+		logger.info("Search link");
 		driver.findElement(By.linkText("Nuevo anuncio")).click();
 		
 		Thread.sleep(2000);
 		
-		System.out.println("Fill in form");
+		logger.info("Fill in form");
 		driver.findElement(By.name("nombre")).sendKeys("Anuncio nuevo con Selenium");
 		driver.findElement(By.name("asunto")).sendKeys("Vendo moto");
 		driver.findElement(By.name("comentario")).sendKeys("Un comentario muy largo...");
 		
 		Thread.sleep(2000);
 		
-		System.out.println("Submit");
+		logger.info("Submit");
 		driver.findElement(By.xpath("//input[@type='submit']")).click();
 		
-		System.out.println("Back to index");
+		logger.info("Back to index");
 		driver.findElement(By.linkText("Volver al tablón")).click();
 		
 		assertNotNull(driver.findElement(By.partialLinkText("Selenium")));
@@ -93,17 +97,17 @@ public class AnuncioTest {
 	@Test
 	public void deleteTest() throws InterruptedException {
 		
-		System.out.println("Open page");
+		logger.info("Open page");
 		driver.get(sutURL);
 		
 		Thread.sleep(2000);
 		
-		System.out.println("Search link");
+		logger.info("Search link");
 		driver.findElement(By.linkText("Pepe")).click();
 		
 		Thread.sleep(2000);
 		
-		System.out.println("Delete");
+		logger.info("Delete");
 		driver.findElement(By.linkText("Borrar")).click();
 		
 		Thread.sleep(2000);
