@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import es.codeurjc.test.ahorcado.PartidaAhorcado.Resultado;
 
-public class PartidaAhorcadoUnitTest {
+public class PartidaAhorcadoSolitaryTest {
 
 	@Test
 	public void testPartidaGanada() {
