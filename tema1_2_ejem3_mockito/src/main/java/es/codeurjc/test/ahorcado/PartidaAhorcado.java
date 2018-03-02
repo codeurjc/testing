@@ -19,7 +19,7 @@ public class PartidaAhorcado {
 		this.horca = horca;
 	} 
 
-	public Resultado probarLetra(Jugador jugador, String letra) {
+	private Resultado probarLetra(Jugador jugador, String letra) {
 
 		String nombre = jugador.getNombre();
 		Consola consola = jugador.getConsola();
