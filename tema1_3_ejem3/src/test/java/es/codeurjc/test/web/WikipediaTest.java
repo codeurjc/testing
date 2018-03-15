@@ -35,16 +35,22 @@ public class WikipediaTest {
 	}
 
 	@Test
-	public void test() {
+	public void test() throws InterruptedException {
 		
 		driver.get("https://wikipedia.org");
         WebElement searchInput = driver.findElement(By.name("search"));
 
+        Thread.sleep(2000);
+        
         searchInput.sendKeys("Rick Astley");
         searchInput.submit();
 
+        Thread.sleep(2000);
+        
         WebElement link = driver.findElement(By.linkText("Rickrolling"));
         link.click();
+        
+        Thread.sleep(2000);
 
         boolean memeFound = driver.findElements(By.cssSelector("p"))
                 .stream()
@@ -54,3 +60,10 @@ public class WikipediaTest {
 	}
 
 }
+
+
+
+
+
+
+

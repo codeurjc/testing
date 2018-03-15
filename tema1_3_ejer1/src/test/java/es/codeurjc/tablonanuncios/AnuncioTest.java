@@ -43,7 +43,9 @@ public class AnuncioTest {
 	
 	@Test
 	public void createTest() throws InterruptedException {
-		driver.get("http://localhost:8080/anuncio/nuevo_form");
+		driver.get("http://localhost:8080/");
+		
+		driver.findElement(By.linkText("Nuevo anuncio")).click();
 		
 		driver.findElement(By.name("nombre")).sendKeys("Anuncio nuevo con Selenium");
 		driver.findElement(By.name("asunto")).sendKeys("Vendo moto");
