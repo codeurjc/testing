@@ -8,25 +8,24 @@ import org.junit.BeforeClass;
 import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
+import static io.restassured.path.json.JsonPath.*;
 
 import org.junit.Test;
-
-import io.restassured.http.Header;
 
 public class ItemTest {
 	
 	@BeforeClass
 	public static void setup() {
-		RestApp.start();
+		//RestApp.start();
 	}
 	
 	@AfterClass
 	public static void teardown() {
-		RestApp.stop();
+		//RestApp.stop();
 	}
 
 	@Test
-	public void testItemAdd() {
+	public void itemAddTest() {
 
 		Item item = new Item();
 		item.setDescription("milk");
@@ -41,6 +40,102 @@ public class ItemTest {
 			statusCode(201).
 			body("description", equalTo("milk")).
 			body("checked", equalTo(false));
+	}
+	
+	
+	
+	@Test
+	public void itemDeleteTest() {
+		
+		//Given
+		Item item = new Item();
+		item.setDescription("milk");
+		item.setChecked(false);
+		
+		String response = given().
+			contentType("application/json").
+			body(item).
+		when().
+			post("/items/").asString();
+		
+		int id = from(response).get("id");
+			
+		//When
+		when().
+			delete("/items/{id}",id).
+
+		//Then	
+		then().
+			statusCode(200).
+			body("id", equalTo(id));
+		
+		when()
+			.get("/items/{id}",id).
+		then()
+			.statusCode(404);
+	}
+	
+	@Test
+	public void itemGetOneTest() {
+		
+		//Given
+		String response = given().
+			contentType("application/json").
+			body("{\"description\":\"milk\",\"checked\":false }").
+		when().
+			post("/items/").asString();
+		
+		int id = from(response).get("id");
+			
+		//When
+		when()
+			.get("/items/{id}",id).
+		then()
+			.statusCode(200).
+			body(
+				"id", equalTo(id),
+				"description", equalTo("milk"),
+				"checked",equalTo(false));
+		
+		when()
+			.get("/items/{id}",id).
+		then()
+			.statusCode(200).
+			body(
+				"id", equalTo(id),
+				"description", equalTo("milk"),
+				"checked",equalTo(false));
+		
+	}
+	
+	@Test
+	public void itemGetTest() {
+		
+		//Given
+		String response = given().
+			contentType("application/json").
+			body("{\"description\":\"milk\",\"checked\":false }").
+		when().
+			post("/items/").asString();
+		
+		String response2 = given().
+				contentType("application/json").
+				body("{\"description\":\"meet\",\"checked\":false }").
+			when().
+				post("/items/").asString();
+		
+		int id1 = from(response).get("id");
+		int id2 = from(response2).get("id");
+			
+		//When
+		when()
+			.get("/items/").
+		then()
+			.statusCode(200).
+			body(
+				"id", hasItems(id1, id2),
+				"description", hasItems("milk","meet"),
+				"checked",hasItems(false));		
 	}
 
 }
