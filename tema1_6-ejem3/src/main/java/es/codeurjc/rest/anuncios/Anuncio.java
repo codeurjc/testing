@@ -1,16 +1,29 @@
-package es.codeurjc.rest;
+package es.codeurjc.rest.anuncios;
 
 public class Anuncio {
 
+	private long id = -1;
 	private String nombre;
 	private String asunto;
 	private String comentario;
+
+	public Anuncio() {
+
+	}
 
 	public Anuncio(String nombre, String asunto, String comentario) {
 		super();
 		this.nombre = nombre;
 		this.asunto = asunto;
 		this.comentario = comentario;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getAsunto() {
@@ -29,8 +42,17 @@ public class Anuncio {
 		this.comentario = comentario;
 	}
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
-		return "Anuncio [nombre=" + nombre + ", asunto=" + asunto + ", comentario=" + comentario + "]";
+		return "Anuncio [id=" + id + ",nombre=" + nombre + ", asunto=" + asunto + ", comentario=" + comentario + "]";
 	}
+
 }

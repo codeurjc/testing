@@ -1,4 +1,4 @@
-package es.codeurjc.rest;
+package es.codeurjc.rest.anuncios;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
