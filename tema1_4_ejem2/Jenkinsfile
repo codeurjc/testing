@@ -1,0 +1,26 @@
+pipeline {
+   tools {
+     maven "M3"
+   }
+   agent any
+   stages {
+     stage("Preparation") { 
+       steps {
+         git 'https://github.com/codeurjc/testing.git'
+       }
+     }
+     stage("Test") {
+       steps {
+          sh "cd tema1_4_ejem2  ; mvn package"
+       }
+     }
+   } 
+   post {
+      always {
+	    junit "tema1_4_ejem2/**/target/surefire-reports/TEST-*.xml"
+      }
+      success {
+        archive "tema1_4_ejem2/target/*.jar"
+      }
+   }
+}

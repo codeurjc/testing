@@ -1,0 +1,46 @@
+pipeline {
+ agent any
+
+ stages {
+   stage("Preparation") { 
+     steps {
+       git 'https://github.com/codeurjc/testing.git'
+     }
+   }
+   stage("Create app") {
+       steps {
+           sh "cd tema1_4_ejem4; docker-compose build"
+       }
+   }
+   stage("Start app") {
+    steps {
+     sh "cd tema1_4_ejem4; docker-compose up -d"
+    }
+   }
+   stage("Test") {
+     steps {
+       sleep 20
+       sh "cd tema1_4_ejem4; mvn test"
+     }
+   }
+ } 
+
+ post {
+    always {
+      sh "cd tema1_4_ejem4; docker-compose logs"
+      
+      sh "cd tema1_4_ejem4; docker-compose logs > all-logs.txt"
+      archive "tema1_4_ejem4/all-logs.txt"
+      
+      sh "cd tema1_4_ejem4; docker-compose logs web > web-logs.txt"
+      archive "tema1_4_ejem4/web-logs.txt"
+      
+      sh "cd tema1_4_ejem4; docker-compose logs db > db-logs.txt"
+      archive "tema1_4_ejem4/db-logs.txt"
+      
+      sh "cd tema1_4_ejem4; docker-compose down"
+      
+      junit "tema1_4_ejem4/**/target/surefire-reports/TEST-*.xml"
+    }
+ }
+}

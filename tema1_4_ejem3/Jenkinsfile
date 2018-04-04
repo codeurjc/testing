@@ -1,0 +1,38 @@
+pipeline {
+ tools {
+   maven "M3"
+ }
+ agent any
+ stages {
+   stage("Preparation") { 
+     steps {
+       git 'https://github.com/codeurjc/testing.git'
+     }
+   }
+   stage("Create jar") {
+       steps {
+           sh "cd tema1_4_ejem3  ; mvn package -DskipTests"
+       }
+   }
+   stage("Start app") {
+    steps {
+     sh "cd tema1_4_ejem3/target;java -jar tema1_4-ejem3-0.0.1-SNAPSHOT.jar > out.log & echo \$! > pid"
+    }
+   }
+   stage("Test") {
+     steps {
+       sh "cd tema1_4_ejem3 ; mvn test"
+     }
+   }
+ } 
+ post {
+    always {
+      junit "tema1_4_ejem3/**/target/surefire-reports/TEST-*.xml"
+      sh "kill \$(cat tema1_4_ejem3/target/pid)"
+      archive "tema1_4_ejem3/target/out.log"
+    }
+    success {
+      archive "tema1_4_ejem3/target/*.jar"
+    }
+ }
+}
