@@ -1,17 +1,14 @@
 package es.codeurjc.test.rest;
 
 
-import static io.restassured.RestAssured.*;
-import io.restassured.http.ContentType;
-import static io.restassured.matcher.RestAssuredMatchers.*;
-import static org.hamcrest.Matchers.*;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import io.restassured.http.ContentType;
 
 /**
  *

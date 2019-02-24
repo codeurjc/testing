@@ -1,0 +1,14 @@
+@startuml classdiagram
+
+App --> Consola
+App --> Jugador 
+App --> JuegoAhorcado
+JuegoAhorcado --> Consola
+JuegoAhorcado --> PartidaAhorcado
+JuegoAhorcado --> Jugador
+PartidaAhorcado *--> Horca
+PartidaAhorcado *--> Palabra
+PartidaAhorcado .. Jugador
+PartidaAhorcado .. Consola
+
+@enduml

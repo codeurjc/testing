@@ -1,7 +1,7 @@
 package es.codeurjc.test.tablonanuncios;
 
-import static org.junit.Assert.*;
-import static org.openqa.selenium.remote.DesiredCapabilities.chrome;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -20,7 +20,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import io.github.bonigarcia.wdm.ChromeDriverManager;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class AnuncioTest {
 
@@ -47,7 +47,7 @@ public class AnuncioTest {
 
 		eusURL = System.getenv("ET_EUS_API");
 		if (eusURL == null) {
-			ChromeDriverManager.getInstance().setup();
+			WebDriverManager.chromedriver().setup();
 		}
 	}
 

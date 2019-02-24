@@ -1,0 +1,41 @@
+@startuml sequence
+
+create App
+
+create Consola
+App -> Consola : new
+
+create Jugador
+App -> Jugador : new
+
+create JuegoAhorcado
+App -> JuegoAhorcado : new
+App -> JuegoAhorcado : jugar()
+
+loop
+    create PartidaAhorcado
+    JuegoAhorcado -> PartidaAhorcado : new
+    JuegoAhorcado -> PartidaAhorcado : jugarPartida()
+
+    create Palabra
+    PartidaAhorcado -> Palabra : new
+
+    create Horca
+    PartidaAhorcado -> Horca : new
+
+    loop
+        PartidaAhorcado -> Consola : leerString()
+        PartidaAhorcado -> Palabra : letraVisibleEnPalabra(letra)
+        PartidaAhorcado -> Palabra : letraOcultaEnPalabra(letra)
+        PartidaAhorcado -> Horca: aniadirParteCuerpo()
+        PartidaAhorcado -> Horca: haPerdido()
+    end
+
+    PartidaAhorcado -> JuegoAhorcado
+end
+
+
+
+JuegoAhorcado -> App 
+
+@enduml

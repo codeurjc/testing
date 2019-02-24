@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import es.codeurjc.test.tablonanuncios.WebApp;
-import io.github.bonigarcia.wdm.ChromeDriverManager;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class AnuncioTest {
 
@@ -20,7 +20,7 @@ public class AnuncioTest {
 	
 	@BeforeClass
 	public static void setupClass() {
-		ChromeDriverManager.getInstance().setup();
+		WebDriverManager.chromedriver().setup();
 		WebApp.start();
 	}
 	

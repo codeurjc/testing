@@ -1,27 +1,25 @@
 package es.codeurjc.test.rest;
 
-import static org.junit.Assert.*;
+import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.when;
+import static io.restassured.path.json.JsonPath.from;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItems;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-
-import static io.restassured.RestAssured.*;
-import static io.restassured.matcher.RestAssuredMatchers.*;
-import static org.hamcrest.Matchers.*;
-import static io.restassured.path.json.JsonPath.*;
-
 import org.junit.Test;
 
 public class ItemTest {
 	
 	@BeforeClass
 	public static void setup() {
-		//RestApp.start();
+		RestApp.start();
 	}
 	
 	@AfterClass
 	public static void teardown() {
-		//RestApp.stop();
+		RestApp.stop();
 	}
 
 	@Test

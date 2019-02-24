@@ -45,6 +45,8 @@ public class JuegoAhorcado {
 	}
 
 	public void jugar(Jugador jugador) {
+		
+		consola.println("Bienvenido al juego del ahorcado");
 
 		jugador.leeNombre();
 		

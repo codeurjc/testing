@@ -1,0 +1,9 @@
+@startuml classdiagram
+
+class PartidaAhorcado #red-green
+PartidaAhorcado *--> Horca 
+PartidaAhorcado *--> Palabra
+PartidaAhorcado .. Jugador
+PartidaAhorcado .. Consola
+
+@enduml

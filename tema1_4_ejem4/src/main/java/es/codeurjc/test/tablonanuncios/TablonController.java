@@ -40,7 +40,7 @@ public class TablonController {
 	@RequestMapping("/anuncio/{id}")
 	public String verAnuncio(Model model, @PathVariable long id) {
 		
-		Anuncio anuncio = repository.findOne(id);
+		Anuncio anuncio = repository.findById(id).get();
 
 		model.addAttribute("anuncio", anuncio);
 

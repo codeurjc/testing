@@ -1,10 +1,10 @@
 package es.codeurjc.test.web;
 
-import org.junit.Test;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.hasItems;
 
-import static io.restassured.RestAssured.*;
-import static io.restassured.matcher.RestAssuredMatchers.*;
-import static org.hamcrest.Matchers.*;
+import org.junit.Test;
 
 public class GoogleBooksAPITest {
 

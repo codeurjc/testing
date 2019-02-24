@@ -25,7 +25,6 @@ public class ComplexAbsTest {
 			{ new Complex(2,2),2.82843},
 			{ new Complex(5,5),7.07107},
 			{ new Complex(10,10),14.1421},
-			{ new Complex(0,0),0},
 			{ new Complex(10,1),10.0498},
 			{ new Complex(20,2),20.099}
 	    };

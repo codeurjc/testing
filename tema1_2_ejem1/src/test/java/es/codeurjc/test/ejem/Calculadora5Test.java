@@ -25,14 +25,12 @@ public class Calculadora5Test {
 
 	@Test
 	public void testSuma() {
-
 		double res = calc.suma(1, 1);
 		assertEquals("1+1 should be equal to 2", 2, res, 0);
 	}
 
 	@Test
 	public void testResta() {
-
 		double res = calc.resta(1, 1);
 		assertEquals("1-1 should be equal to 0", 0, res, 0);
 	}

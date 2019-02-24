@@ -17,20 +17,35 @@ public class ComplexTest {
 	}
 
 	@Test
-	public void GivenZeroComplex_thenRealPartZeroAndImagPartZero() {
+	public void givenZero_thenRealPartIsZero_And_ImagPartIsZero() {
+		
 		assertEquals(0, zero.getRealPart(), 0.001);
 		assertEquals(0, zero.getImaginaryPart(), 0.001);
 	}
 
 	@Test
-	public void GivenZeroComplex_whenAddToComplex1_1_thenComplex1_1IsObtained() {
+	public void givenZeroAndOne_whenZeroAddToOne_thenOneIsObtained() {
 
-		assertEquals(new Complex(1, 1), zero.add(new Complex(1, 1)));
+		//Given
+		Complex one = new Complex(1, 1);
+		
+		//When
+		Complex result = zero.add(one);
+		
+		//Then		
+		assertEquals(new Complex(1, 1), result);
 	}
 
 	@Test
-	public void GivenComplex1_1_whenAddToZero_thenComplex1_1IsObtained() {
+	public void givenZeroAndOne_whenOneAddZero_thenOneIsObtained() {
 
-		assertEquals(new Complex(1, 1), (new Complex(1, 1)).add(zero));
+		//Given
+		Complex one = new Complex(1, 1);
+		
+		//When
+		Complex result = one.add(zero);
+		
+		//Then		
+		assertEquals(new Complex(1, 1), result);
 	}
 }
