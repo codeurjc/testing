@@ -56,6 +56,7 @@ public class PartidaAhorcadoSocialTest {
 
 		// Given
 		Consola consola = mockConsola();
+		
 		when(consola.leerString()).thenReturn("N", "I", "U", "N", "A", "L", "T", "R", "A");
 
 		Jugador jugador = new Jugador(consola);
