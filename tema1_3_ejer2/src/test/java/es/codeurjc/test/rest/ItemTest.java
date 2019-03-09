@@ -10,6 +10,8 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import io.restassured.response.Response;
+
 public class ItemTest {
 	
 	@BeforeClass
@@ -24,14 +26,10 @@ public class ItemTest {
 
 	@Test
 	public void itemAddTest() {
-
-		Item item = new Item();
-		item.setDescription("milk");
-		item.setChecked(false);
 		
 		given().
 			contentType("application/json").
-			body(item).
+			body("{\"description\":\"milk\",\"checked\":false }").
 		when().
 			post("/items/").
 		then().
@@ -40,23 +38,17 @@ public class ItemTest {
 			body("checked", equalTo(false));
 	}
 	
-	
-	
 	@Test
 	public void itemDeleteTest() {
 		
 		//Given
-		Item item = new Item();
-		item.setDescription("milk");
-		item.setChecked(false);
-		
-		String response = given().
+		Response response = given().
 			contentType("application/json").
-			body(item).
+			body("{\"description\":\"milk\",\"checked\":false }").
 		when().
-			post("/items/").asString();
+			post("/items/").andReturn();
 		
-		int id = from(response).get("id");
+		int id = from(response.getBody().asString()).get("id");
 			
 		//When
 		when().
@@ -77,26 +69,19 @@ public class ItemTest {
 	public void itemGetOneTest() {
 		
 		//Given
-		String response = given().
+		Response response = given().
 			contentType("application/json").
 			body("{\"description\":\"milk\",\"checked\":false }").
 		when().
-			post("/items/").asString();
+			post("/items/").andReturn();
 		
-		int id = from(response).get("id");
+		int id = from(response.getBody().asString()).get("id");
 			
 		//When
 		when()
 			.get("/items/{id}",id).
-		then()
-			.statusCode(200).
-			body(
-				"id", equalTo(id),
-				"description", equalTo("milk"),
-				"checked",equalTo(false));
 		
-		when()
-			.get("/items/{id}",id).
+		//Then
 		then()
 			.statusCode(200).
 			body(
@@ -110,24 +95,26 @@ public class ItemTest {
 	public void itemGetTest() {
 		
 		//Given
-		String response = given().
+		Response response1 = given().
 			contentType("application/json").
 			body("{\"description\":\"milk\",\"checked\":false }").
 		when().
-			post("/items/").asString();
+			post("/items/").thenReturn();
 		
-		String response2 = given().
+		Response response2 = given().
 				contentType("application/json").
 				body("{\"description\":\"meet\",\"checked\":false }").
 			when().
-				post("/items/").asString();
+				post("/items/").thenReturn();
 		
-		int id1 = from(response).get("id");
-		int id2 = from(response2).get("id");
+		int id1 = from(response1.getBody().asString()).get("id");
+		int id2 = from(response2.getBody().asString()).get("id");
 			
 		//When
 		when()
 			.get("/items/").
+		
+		//Then
 		then()
 			.statusCode(200).
 			body(
