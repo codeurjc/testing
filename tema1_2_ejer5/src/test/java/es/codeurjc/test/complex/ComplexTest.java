@@ -1,6 +1,8 @@
 package es.codeurjc.test.complex;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -34,6 +36,13 @@ public class ComplexTest {
 	
 	@Test(expected=ArithmeticException.class)
 	public void GivenComplex0_0_whenReciprocal_thenExceptionIsThrown() {
-		zero.reciprocal();
+
+		try {
+			zero.reciprocal();
+		} catch(ArithmeticException e) {
+			assertThat(e.getMessage(), containsString("division by 0"));
+			throw e;
+		}
+
 	}
 }
