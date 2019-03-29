@@ -36,7 +36,7 @@ public class ComplexTest {
 	}
 	
 	@Test(expected=ArithmeticException.class)
-	public void reciprocalTest() {
+	public void GivenComplex0_0_whenReciprocal_thenExceptionIsThrown() {
 		
 		Complex zero = new Complex(0,0);
 		
