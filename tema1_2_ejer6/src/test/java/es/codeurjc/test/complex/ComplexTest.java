@@ -1,6 +1,8 @@
 package es.codeurjc.test.complex;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
@@ -32,4 +34,19 @@ public class ComplexTest {
 
 		assertThat((new Complex(1, 1)).add(zero),equalTo(new Complex(1, 1)));
 	}
+	
+	@Test(expected=ArithmeticException.class)
+	public void reciprocalTest() {
+		
+		Complex zero = new Complex(0,0);
+		
+		try {
+			zero.reciprocal();
+		} catch(ArithmeticException e) {
+			assertThat(e.getMessage(), containsString("division by 0"));
+			throw e;
+		}
+		
+	}
+
 }
