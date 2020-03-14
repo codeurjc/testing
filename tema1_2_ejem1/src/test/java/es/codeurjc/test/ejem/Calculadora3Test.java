@@ -1,7 +1,8 @@
 package es.codeurjc.test.ejem;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 public class Calculadora3Test {
 
@@ -10,7 +11,7 @@ public class Calculadora3Test {
 
 		Calculadora calculadora = new Calculadora();
 		double res = calculadora.suma(1, 1);
-		assertEquals("1+1 should be equal to 2", 2, res, 0);
+		assertEquals(2, res, 0, "1+1 should be equal to 2");
 	}
 
 	@Test
@@ -18,6 +19,6 @@ public class Calculadora3Test {
 
 		Calculadora calculadora = new Calculadora();
 		double res = calculadora.resta(1, 1);
-		assertEquals("1-1 should be equal to 0", 0, res, 0);
+		assertEquals(0, res, 0, "1-1 should be equal to 0");
 	}
 }

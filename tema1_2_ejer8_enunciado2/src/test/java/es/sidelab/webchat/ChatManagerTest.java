@@ -1,12 +1,12 @@
 package es.sidelab.webchat;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ChatManagerTest {
 
@@ -29,8 +29,8 @@ public class ChatManagerTest {
 		chatManager.newChat("Chat2", 5, TimeUnit.SECONDS);
 
 		// Comprobar que el chat recibido en el método 'newChat' se llama 'Chat'
-		assertTrue("The method 'newChat' should be invoked with 'Chat', but the value is "
-				+ chatName[0], Objects.equals(chatName[0], "Chat"));
+		assertTrue(Objects.equals(chatName[0], "Chat"), 
+				"The method 'newChat' should be invoked with 'Chat', but the value is "+ chatName[0]);
 	}
 
 	@Test
@@ -57,8 +57,7 @@ public class ChatManagerTest {
 		chat.addUser(user1);
 		chat.addUser(user2);
 
-		assertTrue("Notified new user '" + newUser[0] + "' is not equal than user name 'user2'",
-				"user2".equals(newUser[0]));
+		assertTrue("user2".equals(newUser[0]), "Notified new user '" + newUser[0] + "' is not equal than user name 'user2'");
 
 	}
 }

@@ -2,15 +2,15 @@ package es.codeurjc.test.chat;
 
 import static org.mockito.Mockito.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ChatNotificationsTest extends ChatTest {
 
 	private Chat chat;
 	private User userA;
 
-	@Before
+	@BeforeEach
 	public void init() {
 
 		chat = new Chat("Mi grupo");

@@ -1,15 +1,15 @@
 package es.codeurjc.test.ejem;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class Calculadora4Test {
 
 	Calculadora calc;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		this.calc = new Calculadora();
 	}
@@ -18,13 +18,13 @@ public class Calculadora4Test {
 	public void testSuma() {
 
 		double res = calc.suma(1, 1);
-		assertEquals("1+1 should be equal to 2", 2, res, 0);
+		assertEquals(2, res, 0, "1+1 should be equal to 2");
 	}
 
 	@Test
 	public void testResta() {
 
 		double res = calc.resta(1, 1);
-		assertEquals("1-1 should be equal to 0", 0, res, 0);
+		assertEquals(0, res, 0, "1-1 should be equal to 0");
 	}
 }

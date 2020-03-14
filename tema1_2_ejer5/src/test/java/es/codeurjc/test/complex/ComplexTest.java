@@ -1,17 +1,18 @@
 package es.codeurjc.test.complex;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ComplexTest {
 
 	private Complex zero;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		zero = new Complex(0, 0);
 	}
@@ -34,15 +35,12 @@ public class ComplexTest {
 		assertEquals(new Complex(1, 1), (new Complex(1, 1)).add(zero));
 	}
 	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void GivenComplex0_0_whenReciprocal_thenExceptionIsThrown() {
 
-		try {
-			zero.reciprocal();
-		} catch(ArithmeticException e) {
-			assertThat(e.getMessage(), containsString("division by 0"));
-			throw e;
-		}
-
+		ArithmeticException actual = 
+				assertThrows(ArithmeticException.class, () -> zero.reciprocal());
+	
+		assertThat(actual.getMessage(), containsString("division by zero"));
 	}
 }

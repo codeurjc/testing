@@ -1,17 +1,17 @@
 package es.codeurjc.test.complex;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import es.codeurjc.test.complex.Complex;
-
-import static org.junit.Assert.*;
 
 public class ComplexTest {
 
 	private Complex zero;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		zero = new Complex(0, 0);
 	}

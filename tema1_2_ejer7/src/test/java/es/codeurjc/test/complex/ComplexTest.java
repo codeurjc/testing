@@ -2,14 +2,14 @@ package es.codeurjc.test.complex;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ComplexTest {
 
 	private Complex zero;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		zero = new Complex(0, 0);
 	}

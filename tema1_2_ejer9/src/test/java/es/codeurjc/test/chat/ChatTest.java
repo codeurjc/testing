@@ -1,13 +1,14 @@
 package es.codeurjc.test.chat;
 
-import org.junit.Test;
-
 import es.codeurjc.test.chat.Chat;
 import es.codeurjc.test.chat.MediaServer;
 import es.codeurjc.test.chat.NotEnoughResourcesException;
 import es.codeurjc.test.chat.User;
 
 import static org.mockito.Mockito.*;
+
+import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class ChatTest {

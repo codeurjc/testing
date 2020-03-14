@@ -3,7 +3,7 @@ package es.codeurjc.test.chat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ChatMediaServerTest extends ChatTest {
 	
