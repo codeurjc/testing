@@ -2,10 +2,11 @@ package es.codeurjc.test.ejem;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class AssertJTest {
 	
@@ -36,10 +37,13 @@ public class AssertJTest {
 		assertThat("pepe").startsWith("ju");
 	}
 	
-	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	@Test
 	public void arrayExceptionTest() {
 		int[] array = {3,4,2};
-		int value = array[4];
+		
+		ArrayIndexOutOfBoundsException e = 
+				assertThrows(ArrayIndexOutOfBoundsException.class, 
+						() -> {int value = array[4];});
 	}
 	
 	@Test

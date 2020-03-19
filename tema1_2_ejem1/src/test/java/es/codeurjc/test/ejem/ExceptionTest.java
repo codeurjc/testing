@@ -10,7 +10,9 @@ public class ExceptionTest {
 	@Test
 	public void arrayExceptionTest2() {
 		int[] array = {3,4,2};
-		ArrayIndexOutOfBoundsException actual = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {int value = array[4];});
+		ArrayIndexOutOfBoundsException actual = 
+				assertThrows(ArrayIndexOutOfBoundsException.class, 
+						() -> {int value = array[4];});
 		assertEquals("4", actual.getMessage());		
 	}
 }

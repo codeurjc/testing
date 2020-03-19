@@ -5,7 +5,7 @@ import static org.mockito.Mockito.*;
 
 import java.util.function.Predicate;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class FilteredSetMockTest {
 
