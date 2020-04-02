@@ -1,11 +1,11 @@
 package es.codeurjc.test.web;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,17 +17,17 @@ public class WikipediaTest {
 
 	private WebDriver driver;
 
-	@BeforeClass
+	@BeforeAll
 	public static void setupClass() {
 		WebDriverManager.chromedriver().setup();
 	}
 	
-	@Before
+	@BeforeEach
 	public void setupTest() {
 		driver = new ChromeDriver();
 	}
 
-	@After
+	@AfterEach
 	public void teardown() {
 		if (driver != null) {
 			driver.quit();
@@ -56,7 +56,7 @@ public class WikipediaTest {
                 .stream()
                 .anyMatch(element -> element.getText().contains("meme"));
 
-        assertTrue("Rickrolling page should contain meme word", memeFound);
+        assertTrue(memeFound, "Rickrolling page should contain meme word");
 	}
 
 }
