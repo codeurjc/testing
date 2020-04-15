@@ -6,20 +6,20 @@ import static io.restassured.path.json.JsonPath.from;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItems;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import io.restassured.response.Response;
 
 public class ItemTest {
 	
-	@BeforeClass
+	@BeforeAll
 	public static void setup() {
 		RestApp.start();
 	}
 	
-	@AfterClass
+	@AfterAll
 	public static void teardown() {
 		RestApp.stop();
 	}

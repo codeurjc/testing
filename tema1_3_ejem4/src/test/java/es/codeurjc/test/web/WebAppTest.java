@@ -2,11 +2,11 @@ package es.codeurjc.test.web;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,23 +17,23 @@ public class WebAppTest {
 
 	private WebDriver driver;
 
-	@BeforeClass
+	@BeforeAll
 	public static void setupClass() {
 		WebDriverManager.chromedriver().setup();
 		WebApp.start();
 	}
 	
-	@AfterClass
+	@AfterAll
 	public static void teardownClass() {
 		WebApp.stop();
 	}
 
-	@Before
+	@BeforeEach
 	public void setupTest() {
 		driver = new ChromeDriver();
 	}
 
-	@After
+	@AfterEach
 	public void teardown() {
 		if (driver != null) {
 			driver.quit();

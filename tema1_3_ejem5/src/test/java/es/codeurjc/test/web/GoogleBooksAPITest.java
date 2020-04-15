@@ -4,7 +4,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItems;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class GoogleBooksAPITest {
 

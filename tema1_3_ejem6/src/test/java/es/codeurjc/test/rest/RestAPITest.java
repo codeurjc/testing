@@ -4,9 +4,9 @@ package es.codeurjc.test.rest;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import io.restassured.http.ContentType;
 
@@ -16,12 +16,12 @@ import io.restassured.http.ContentType;
  */
 public class RestAPITest {
     
-    @BeforeClass
+    @BeforeAll
     public static void setup(){
         RestApp.start();
     }
     
-    @AfterClass
+    @AfterAll
     public static void teardown(){
         RestApp.stop();
     }
@@ -37,10 +37,10 @@ public class RestAPITest {
                 
                 
         when().
-             post("http://localhost:8080/items/").
-	then().
-	     statusCode(201).
-	     body("id", equalTo(1));
+            post("http://localhost:8080/items/").
+	    then().
+	     	statusCode(201).
+	     	body("id", equalTo(1));
         
     }
 }
