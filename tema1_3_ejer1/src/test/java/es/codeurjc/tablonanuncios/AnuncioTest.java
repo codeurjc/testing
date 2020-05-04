@@ -43,6 +43,9 @@ public class AnuncioTest {
 	
 	@Test
 	public void createTest() throws InterruptedException {
+		
+		Thread.sleep(5000);
+		
 		driver.get("http://localhost:8080/");
 		
 		driver.findElement(By.linkText("Nuevo anuncio")).click();
@@ -55,7 +58,7 @@ public class AnuncioTest {
 		
 		driver.findElement(By.linkText("Volver al tablón")).click();
 		
-		assertNotNull(driver.findElement(By.partialLinkText("Selenium")));
+		assertNotNull(driver.findElement(By.linkText("Anuncio nuevo con Selenium Vendo moto")));
 	}
 
 }

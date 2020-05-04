@@ -10,7 +10,7 @@ public class WebApp {
 	private static ConfigurableApplicationContext app;
 	
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(WebApp.class, args);
+        SpringApplication.run(WebApp.class, new String[] { "--server.port=9000" });
     }
     
     public static void start() {

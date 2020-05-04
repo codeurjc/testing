@@ -1,5 +1,7 @@
 package es.codeurjc.test.tablonanuncios;
 
+import java.util.Optional;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +42,11 @@ public class TablonController {
 	@RequestMapping("/anuncio/{id}")
 	public String verAnuncio(Model model, @PathVariable long id) {
 		
-		Anuncio anuncio = repository.findOne(id);
-
-		model.addAttribute("anuncio", anuncio);
+		Optional<Anuncio> anuncio = repository.findById(id);
+		
+		if(anuncio.isPresent()) {
+			model.addAttribute("anuncio", anuncio);
+		}
 
 		return "ver_anuncio";
 	}
@@ -50,7 +54,7 @@ public class TablonController {
 	@RequestMapping("/anuncio/borrar/{id}")
 	public String borrarAnuncio(Model model, @PathVariable long id) {
 		
-		repository.delete(id);
+		repository.deleteById(id);
 		
 		return "tablon";
 		

@@ -58,12 +58,4 @@ public class WikipediaTest {
 
         assertTrue(memeFound, "Rickrolling page should contain meme word");
 	}
-
 }
-
-
-
-
-
-
-

@@ -6,10 +6,10 @@ import static org.openqa.selenium.remote.DesiredCapabilities.chrome;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,7 +24,7 @@ public class WebAppTest {
 
 	private WebDriver driver;
 
-	@BeforeClass
+	@BeforeAll
 	public static void setupClass() {
 
 		String sutHost = System.getenv("ET_SUT_HOST");
@@ -41,7 +41,7 @@ public class WebAppTest {
 		}
 	}
 
-	@Before
+	@BeforeEach
 	public void setupTest() throws MalformedURLException {
 		String eusURL = System.getenv("ET_EUS_API");
 		if (eusURL == null) {
@@ -53,7 +53,7 @@ public class WebAppTest {
 		}
 	}
 
-	@After
+	@AfterEach
 	public void teardown() {
 		if (driver != null) {
 			driver.quit();
@@ -85,7 +85,7 @@ public class WebAppTest {
 		assertThat(title).isEqualTo(newTitle);
 		assertThat(body).isEqualTo(newBody);
 		
-		Thread.sleep(10000);
+		Thread.sleep(3000);
 	}
 
 }

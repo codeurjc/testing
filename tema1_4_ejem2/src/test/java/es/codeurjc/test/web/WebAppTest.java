@@ -24,7 +24,7 @@ public class WebAppTest {
 		WebDriverManager.chromedriver().setup();
 		WebApp.start();
 	}
-	
+
 	@AfterAll
 	public static void teardownClass() {
 		WebApp.stop();
@@ -32,7 +32,7 @@ public class WebAppTest {
 
 	@BeforeEach
 	public void setupTest() throws MalformedURLException {
-        driver = new ChromeDriver();
+		driver = new ChromeDriver();
 	}
 
 	@AfterEach
@@ -44,7 +44,7 @@ public class WebAppTest {
 
 	@Test
 	public void test() {
-		
+
 		driver.get("http://localhost:8080/");
 
 		String newTitle = "MessageTitle";

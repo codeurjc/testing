@@ -1,4 +1,4 @@
-package es.sidelab.webchat;
+package es.codeurjc.test.chat;
 
 public interface User {
 
