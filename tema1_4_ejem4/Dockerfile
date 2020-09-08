@@ -1,4 +1,4 @@
-FROM maven as builder
+FROM maven:3-openjdk-8 as builder
 RUN apt-get update; apt-get install -y netcat
 RUN mkdir /project
 COPY . /project/
