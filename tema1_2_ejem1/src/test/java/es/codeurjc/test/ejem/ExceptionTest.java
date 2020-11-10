@@ -8,11 +8,14 @@ import org.junit.jupiter.api.Test;
 public class ExceptionTest {
 	
 	@Test
-	public void arrayExceptionTest2() {
-		int[] array = {3,4,2};
-		ArrayIndexOutOfBoundsException actual = 
-				assertThrows(ArrayIndexOutOfBoundsException.class, 
-						() -> {int value = array[4];});
-		assertEquals("4", actual.getMessage());		
+	public void arrayExceptionTest() {
+
+		NumberFormatException ex = assertThrows(NumberFormatException.class, () -> {
+			
+			Integer.parseInt("No integer");
+			
+		});
+		
+		assertEquals("For input string: \"No integer\"", ex.getMessage());		
 	}
 }
