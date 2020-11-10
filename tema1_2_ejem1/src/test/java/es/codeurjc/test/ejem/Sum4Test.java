@@ -22,8 +22,6 @@ public class Sum4Test {
 				{0, 0, 0},
 				{1, 1, 2}
 		};
-		return Arrays.asList(values);
-		
-	}
-	
+		return Arrays.asList(values);		
+	}	
 }
