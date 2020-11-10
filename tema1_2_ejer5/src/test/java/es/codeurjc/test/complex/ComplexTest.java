@@ -1,7 +1,5 @@
 package es.codeurjc.test.complex;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -41,6 +39,6 @@ public class ComplexTest {
 		ArithmeticException actual = 
 				assertThrows(ArithmeticException.class, () -> zero.reciprocal());
 	
-		assertThat(actual.getMessage(), containsString("division by zero"));
+		assertEquals(actual.getMessage(), "division by zero");
 	}
 }
