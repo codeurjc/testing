@@ -12,29 +12,34 @@ public class AssertJTest {
 	
 	@Test
 	public void testAssertTrue() {
-		assertTrue("pepe".equals("juan"));
+		String name = "pepe";
+		assertTrue(name.equals("juan"));
 	}
 	
 	@Test
 	public void testAssertEquals() {
-		assertEquals("pepe","juan");
+		String name = "pepe";
+		assertEquals(name,"juan");
 	}
 	
 	@Test
 	public void testAssertThatEquals() {
-		//assertThat("pepe", equalTo("juan"));
-		assertThat("pepe").isEqualTo("juan");
+		String name = "pepe";
+		//assertThat(name, equalTo("juan"));
+		assertThat(name).isEqualTo("juan");				
 	}	
 	
 	@Test
 	public void testAssertStartsWith() {
-		assertTrue("pepe".startsWith("ju"));
+		String name = "pepe";
+		assertTrue(name.startsWith("ju"));
 	}
 	
 	@Test
 	public void testAssertThatStartsWith() {
-		//assertThat("pepe", startsWith("ju"));
-		assertThat("pepe").startsWith("ju");
+		String name = "pepe";
+		//assertThat(name, startsWith("ju"));
+		assertThat(name).startsWith("ju");
 	}
 	
 	@Test

@@ -9,7 +9,8 @@ public class AppTest {
 	
 	@Test
 	public void testSuma() {
-		assertEquals("Text", "Text");
+		String text = "Text";
+		assertEquals("Text", text);
 	}
 	
 	@Test
