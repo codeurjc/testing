@@ -19,10 +19,10 @@ public class ComplexAbsTest {
 		"10, 1, 10.0498",
 		"20, 2, 20.099"
 		})
-	public void absoluteTest(double real, double imag, double result) {
+	public void absoluteTest(double real, double imag, double abs) {
 
 		Complex complex = new Complex(real, imag);
-		assertEquals(complex.abs(), result, 0.001);
+		assertEquals(complex.abs(), abs, 0.001);
 	}
 	
 }
