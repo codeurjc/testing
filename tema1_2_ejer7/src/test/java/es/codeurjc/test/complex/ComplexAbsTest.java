@@ -1,6 +1,7 @@
 package es.codeurjc.test.complex;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.offset;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -13,7 +14,7 @@ public class ComplexAbsTest {
 	@ParameterizedTest(name = "{index}: ({0}).abs() == {1}")
 	@MethodSource("values")
 	public void absoluteTest(Complex complex, double result) {
-		assertEquals(complex.abs(), result, 0.001);
+		assertThat(complex.abs()).isCloseTo(result, offset(0.001));
 	}
 	
 	public static Collection<Object[]> values() {
