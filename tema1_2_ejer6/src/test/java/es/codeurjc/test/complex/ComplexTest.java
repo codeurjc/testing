@@ -18,32 +18,33 @@ public class ComplexTest {
 	}
 
 	@Test
-	public void GivenZeroComplex_thenRealPartZeroAndImagPartZero() {
+	public void givenZeroComplex_thenRealPartZeroAndImagPartZero() {
 		assertThat(zero.getRealPart(), equalTo(0.0));
 		assertThat(zero.getImaginaryPart(), equalTo(0.0));
 	}
 
 	@Test
-	public void GivenZeroComplex_whenAddToComplex1_1_thenComplex1_1IsObtained() {
+	public void givenZeroComplex_whenAddToComplex1_1_thenComplex1_1IsObtained() {
 
 		assertThat(zero.add(new Complex(1, 1)), equalTo(new Complex(1, 1)));
 	}
 
 	@Test
-	public void GivenComplex1_1_whenAddToZero_thenComplex1_1IsObtained() {
+	public void givenComplex1_1_whenAddToZero_thenComplex1_1IsObtained() {
 
 		assertThat((new Complex(1, 1)).add(zero),equalTo(new Complex(1, 1)));
 	}
 	
 	@Test
-	public void GivenComplex0_0_whenReciprocal_thenExceptionIsThrown() {
+	public void givenComplex0_0_whenReciprocal_thenExceptionIsThrown() {
 		
-		Complex zero = new Complex(0,0);
+		ArithmeticException actual = assertThrows(ArithmeticException.class, () -> {
+			
+			zero.reciprocal();
+			
+		});
 		
-		ArithmeticException e = 
-				assertThrows(ArithmeticException.class, 
-						() -> zero.reciprocal());
-		assertThat(e.getMessage(), containsString("division by zero"));
+		assertThat(actual.getMessage(), containsString("division by zero"));
 		
 	}
 
