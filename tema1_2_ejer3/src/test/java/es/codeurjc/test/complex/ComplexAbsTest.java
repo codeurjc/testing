@@ -12,7 +12,7 @@ import es.codeurjc.test.complex.Complex;
 
 public class ComplexAbsTest {
 
-	@ParameterizedTest(name = "{index}: ({0}).abs() == {1}")
+	@ParameterizedTest
 	@MethodSource("values")
 	public void absoluteTest(Complex complex, double result) {
 		assertEquals(complex.abs(), result, 0.001);
